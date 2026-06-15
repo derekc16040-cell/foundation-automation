@@ -213,8 +213,10 @@ export default function Home() {
                   {outcome.text}
                 </p>
 
-                <span className="absolute bottom-4 left-6 text-3xl font-light leading-none text-[#0e3f5f] transition duration-500 group-hover:rotate-180">
-                  ⌄
+                <span className="absolute bottom-6 left-6 flex items-center gap-1.5 transition duration-500 group-hover:translate-y-1">
+                  <span className="h-2 w-2 rounded-full bg-[#0e3f5f]" />
+                  <span className="h-2 w-2 rounded-full bg-[#0e3f5f]" />
+                  <span className="h-2 w-2 rounded-full bg-[#0e3f5f]" />
                 </span>
               </div>
             ))}
