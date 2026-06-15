@@ -5,7 +5,7 @@ export default function ContactPage() {
         <div className="mx-auto flex h-[82px] max-w-7xl items-center justify-between px-6">
           <a href="/" aria-label="Go back home">
             <img
-              src="/images/FA_Logo_white_Long2.png"
+              src="/images/FA_Logo_White_Long2.png"
               alt="Foundation Automation"
               className="h-20 w-auto object-contain"
             />
