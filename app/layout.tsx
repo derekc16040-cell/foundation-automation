@@ -16,24 +16,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Foundation Automation | Automation and Integration Consulting",
+    default: "Foundation Automation | Print Workflow Automation & Integration",
     template: "%s | Foundation Automation",
   },
   description:
-    "Foundation Automation helps growing businesses connect systems, automate workflows, implement practical AI, and build scalable digital operations.",
+    "Foundation Automation helps print businesses streamline web-to-print, storefront, order intake, file management, and production workflows through automation, integrations, AI, and ongoing technical support.",
   keywords: [
-    "automation consulting",
-    "systems integration",
-    "workflow automation",
-    "AI implementation",
-    "digital transformation",
     "print automation",
-    "manufacturing automation",
+    "print workflow automation",
+    "web to print support",
+    "OnPrintShop support",
+    "storefront integration",
+    "systems integration",
+    "AI implementation",
   ],
   openGraph: {
     title: "Foundation Automation",
     description:
-      "Automation strategy, systems integration, applied AI, and scalable digital operations for growing businesses.",
+      "Web-to-print support, print workflow automation, storefront integrations, applied AI, and scalable digital operations for print businesses.",
     type: "website",
   },
   robots: {

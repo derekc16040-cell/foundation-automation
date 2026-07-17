@@ -1,54 +1,54 @@
 const services = [
   {
     number: "01",
-    title: "Automation Strategy",
+    title: "Web-to-Print Support",
     description:
-      "Turn operational pain points into a practical roadmap with clear priorities, measurable outcomes, and a plan built around your business.",
-    points: ["Process discovery", "Opportunity mapping", "Technology roadmap"],
-    icon: "strategy",
-  },
-  {
-    number: "02",
-    title: "Systems Integration",
-    description:
-      "Connect the platforms your team already relies on so information, files, orders, and updates move without repetitive manual entry.",
-    points: ["APIs and webhooks", "ERP, CRM, and MIS", "Data synchronization"],
-    icon: "integration",
-  },
-  {
-    number: "03",
-    title: "Workflow Automation",
-    description:
-      "Design reliable workflows that standardize critical steps, route work intelligently, and keep exceptions visible instead of hidden.",
-    points: [
-      "Operational workflows",
-      "File and data routing",
-      "Alerts and approvals",
-    ],
-    icon: "workflow",
-  },
-  {
-    number: "04",
-    title: "Applied AI",
-    description:
-      "Implement AI where it creates real operational value, with the right controls, integrations, and human oversight for your environment.",
-    points: ["AI assistants", "Document intelligence", "Decision support"],
-    icon: "ai",
-  },
-  {
-    number: "05",
-    title: "Digital Platforms",
-    description:
-      "Build modern websites, customer portals, ecommerce storefronts, and internal tools that connect the front end experience to operations.",
-    points: ["Web and ecommerce", "Client portals", "Custom applications"],
+      "Support for storefront setup, product configuration, customer portals, order intake, and connected web-to-print workflows.",
+    points: ["Customer storefronts", "Product setup", "Order intake"],
     icon: "platform",
   },
   {
-    number: "06",
-    title: "Managed Optimization",
+    number: "02",
+    title: "Print Workflow Automation",
     description:
-      "Keep improving after launch through monitoring, support, troubleshooting, system maintenance, and ongoing workflow refinement.",
-    points: ["Continuous improvement", "Technical support", "System expansion"],
+      "Automate repetitive steps across estimating, artwork, file handling, prepress, approvals, production handoffs, and customer communication.",
+    points: ["File routing", "Approval flows", "Production handoffs"],
+    icon: "workflow",
+  },
+  {
+    number: "03",
+    title: "Storefront & MIS Integration",
+    description:
+      "Connect storefronts, MIS platforms, CRMs, spreadsheets, production tools, and internal systems so job information moves without constant re-entry.",
+    points: [
+      "APIs and webhooks",
+      "MIS and storefronts",
+      "Data synchronization",
+    ],
+    icon: "integration",
+  },
+  {
+    number: "04",
+    title: "File & Order Management",
+    description:
+      "Improve how incoming files, job details, proofs, approvals, folders, and production information are organized, validated, and routed.",
+    points: ["Folder structure", "Order details", "Proof workflows"],
+    icon: "strategy",
+  },
+  {
+    number: "05",
+    title: "AI-Assisted Operations",
+    description:
+      "Use AI to summarize customer requests, identify missing order details, draft responses, classify jobs, and support faster internal decisions.",
+    points: ["Email summaries", "Data extraction", "Decision support"],
+    icon: "ai",
+  },
+  {
+    number: "06",
+    title: "Ongoing Technical Support",
+    description:
+      "Monthly support for maintenance, storefront updates, troubleshooting, workflow improvements, integrations, and continued optimization.",
+    points: ["Maintenance support", "Troubleshooting", "System expansion"],
     icon: "support",
   },
 ];
@@ -56,58 +56,70 @@ const services = [
 const processSteps = [
   {
     number: "01",
-    title: "Discover",
-    text: "We learn how work actually moves through your business, including the workarounds, delays, and handoffs that are easy to miss.",
+    title: "Map",
+    text: "We map how jobs actually move through your shop, from customer request and artwork to approvals, production, delivery, and follow-up.",
   },
   {
     number: "02",
-    title: "Architect",
-    text: "We design the future state, define system responsibilities, plan integrations, and prioritize the highest value improvements.",
+    title: "Connect",
+    text: "We identify where storefronts, MIS data, files, customer communication, and internal workflows should connect more cleanly.",
   },
   {
     number: "03",
     title: "Build",
-    text: "We implement, test, document, and launch the workflows, integrations, AI tools, or digital platforms your team needs.",
+    text: "We implement, test, document, and launch the workflows, integrations, AI tools, storefront improvements, or support systems your team needs.",
   },
   {
     number: "04",
     title: "Optimize",
-    text: "We monitor performance, support adoption, and continuously improve the system as your operation grows and changes.",
+    text: "We support adoption, fix friction points, improve visibility, and continue refining the system as your print business grows.",
   },
 ];
 
 const outcomes = [
   {
-    title: "Less manual work",
-    text: "Reduce duplicate entry, repetitive file handling, status chasing, and routine administrative tasks.",
+    title: "Less manual re-entry",
+    text: "Reduce the time spent copying the same customer, job, file, and order information between disconnected systems.",
   },
   {
-    title: "Cleaner data flow",
-    text: "Create a dependable path for information to move between teams, customers, and business systems.",
+    title: "Cleaner job intake",
+    text: "Collect better information upfront so jobs are not delayed by missing specs, unclear details, or repeated follow-ups.",
   },
   {
-    title: "Better visibility",
-    text: "Give teams a clearer view of job status, exceptions, ownership, and the next required action.",
+    title: "Better file organization",
+    text: "Create consistent file structures, routing rules, and workflows so your team knows where things are and what happens next.",
   },
   {
-    title: "Scalable operations",
-    text: "Handle more volume and complexity without adding the same amount of labor and overhead.",
+    title: "Scalable print operations",
+    text: "Handle more order volume, more customers, and more complexity without immediately adding the same amount of overhead.",
   },
 ];
 
 const industries = [
   {
-    title: "Print and Production",
-    text: "Web to print, prepress, MIS, imposition, production routing, shipping, and shop floor visibility.",
+    title: "Print Shops",
+    text: "Order intake, proofs, artwork, prepress, production handoffs, shipping, reporting, and shop floor visibility.",
   },
   {
-    title: "Manufacturing",
-    text: "Machine data, ERP workflows, production reporting, quality handoffs, and operational system integration.",
+    title: "Web-to-Print & Storefronts",
+    text: "Website support, customer portals, product setup, ecommerce workflows, and storefront-to-production connections.",
   },
   {
-    title: "Growing Businesses",
-    text: "CRM, finance, ecommerce, customer service, internal workflows, and connected digital operations.",
+    title: "Production-Focused Businesses",
+    text: "Connected workflows for teams that need customer requests, files, systems, production data, and support processes to move together.",
   },
+];
+
+const printCapabilities = [
+  "Web-to-print storefronts",
+  "Workflow Automation",
+  "Order intake workflows",
+  "File routing and organization",
+  "Proof and approval workflows",
+  "Prepress and production handoffs",
+  "MIS and storefront integrations",
+  "Reporting and workflow visibility",
+  "Ongoing technical support",
 ];
 
 function ArrowIcon({ className = "" }: { className?: string }) {
@@ -236,7 +248,7 @@ export default function Home() {
               href="/contact"
               className="header-cta group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#07324b]"
             >
-              Start a conversation
+              Schedule a workflow review
               <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </nav>
@@ -300,36 +312,36 @@ export default function Home() {
             <div className="max-w-5xl">
               <div className="hero-reveal hero-delay-1 mb-8 inline-flex items-center gap-3 rounded-full border border-white/18 bg-white/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.19em] text-white/85 backdrop-blur-md sm:text-sm">
                 <span className="signal-dot" />
-                Strategy, integration, automation, and AI
+                Web-to-print, automation, integrations, and AI
               </div>
 
               <h1 className="hero-title hero-reveal hero-delay-2 max-w-[1100px] text-[clamp(3.35rem,7.2vw,7.2rem)] font-semibold leading-[.9] tracking-[-0.065em]">
-                Build the systems
+                Modernize the workflows
                 <span className="block text-white/55">
-                  your growth depends on.
+                  your print shop depends on.
                 </span>
               </h1>
 
               <div className="hero-reveal hero-delay-3 mt-9 grid max-w-4xl gap-8 border-l border-white/24 pl-6 md:grid-cols-[1fr_auto] md:items-end md:pl-8">
                 <p className="max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
-                  Foundation Automation helps growing businesses connect
-                  technology, eliminate operational friction, and create
-                  scalable systems that perform like enterprise infrastructure
-                  without enterprise consulting overhead.
+                  Foundation Automation helps print businesses streamline
+                  web-to-print, storefront, order intake, file management, and
+                  production workflows through automation, integrations, AI, and
+                  ongoing technical support.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <a
                     href="/contact"
                     className="primary-button group inline-flex items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-bold text-[#07324b] sm:px-7"
                   >
-                    Book a strategy call
+                    Schedule a workflow review
                     <ArrowIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                   <a
                     href="#expertise"
                     className="secondary-button inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-4 text-sm font-bold text-white backdrop-blur-sm"
                   >
-                    Explore our expertise
+                    Explore print solutions
                   </a>
                 </div>
               </div>
@@ -338,10 +350,10 @@ export default function Home() {
             <aside className="hero-reveal hero-delay-4 hidden justify-self-end lg:block">
               <div className="capability-panel w-[285px] rounded-[28px] border border-white/16 bg-[#06283d]/58 p-6 backdrop-blur-xl">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#7cd5e6]">
-                  Built to connect
+                  Built for print
                 </p>
                 <div className="mt-6 space-y-0">
-                  {["People", "Processes", "Platforms", "Data", "AI"].map(
+                  {["Storefronts", "Orders", "Files", "Production", "AI"].map(
                     (item, index) => (
                       <div
                         key={item}
@@ -364,7 +376,7 @@ export default function Home() {
 
         <div className="absolute inset-x-0 bottom-0 border-t border-white/12 bg-[#06283d]/60 backdrop-blur-md">
           <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 py-5 text-xs font-bold uppercase tracking-[0.18em] text-white/55 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
-            <span>Technology should move the business forward</span>
+            <span>Print technology should move production forward</span>
             <div className="flex flex-wrap items-center gap-x-7 gap-y-2 text-white/75">
               <span>Discover</span>
               <span className="hidden h-1 w-1 rounded-full bg-[#73d0e2] md:block" />
@@ -386,21 +398,22 @@ export default function Home() {
           </div>
           <div>
             <h2 className="max-w-5xl text-[clamp(2.5rem,5vw,5.1rem)] font-semibold leading-[1.01] tracking-[-0.055em] text-[#082c43]">
-              Most businesses do not need more software. They need their
-              software, data, and workflows to{" "}
+              Most print shops do not need more disconnected tools. They need
+              storefronts, order data, artwork, and production workflows to{" "}
               <span className="text-[#3c8ba2]">work together.</span>
             </h2>
             <div className="mt-10 grid gap-7 border-t border-[#b9c9d0] pt-8 sm:grid-cols-2">
               <p className="text-base leading-8 text-[#49616e]">
-                Disconnected systems create invisible costs: duplicate entry,
-                missed handoffs, unclear ownership, inconsistent data, and teams
-                spending their day moving information instead of moving the
-                business forward.
+                Disconnected print systems create invisible costs: duplicate
+                entry, missing job details, file confusion, approval delays,
+                unclear handoffs, and teams spending too much time chasing
+                information instead of producing work.
               </p>
               <p className="text-base leading-8 text-[#49616e]">
-                We operate between strategy and implementation. That means we do
-                not stop at recommendations. We architect the solution, build it
-                into your environment, and stay involved as it evolves.
+                We operate between print operations and technology. That means
+                we do not stop at recommendations. We help map the workflow,
+                connect the systems, build the solution, and support it as your
+                shop grows.
               </p>
             </div>
           </div>
@@ -416,16 +429,16 @@ export default function Home() {
             <div>
               <p className="section-kicker">What we deliver</p>
               <p className="mt-5 max-w-md text-base leading-8 text-[#647984]">
-                A connected set of consulting and implementation capabilities
-                designed around operational results, not isolated technology
-                projects.
+                A connected set of services designed around real print shop
+                problems: storefronts, files, orders, approvals, production
+                handoffs, support, and visibility.
               </p>
             </div>
             <h2 className="text-[clamp(2.8rem,5.5vw,5.7rem)] font-semibold leading-[.98] tracking-[-0.06em] text-[#082c43]">
-              Enterprise level capability.
+              Automation and integration.
               <br />
               <span className="text-[#8ba1aa]">
-                Built for growing businesses.
+                Built for modern print businesses.
               </span>
             </h2>
           </div>
@@ -469,6 +482,45 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#f4f7f8] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="grid gap-12 lg:grid-cols-[.75fr_1.25fr] lg:items-start">
+            <div>
+              <p className="section-kicker">Built for print businesses</p>
+              <p className="mt-6 max-w-sm text-base leading-8 text-[#647984]">
+                Your shop already has people, software, equipment, and customer
+                expectations moving fast. The opportunity is making those pieces
+                work together more reliably.
+              </p>
+            </div>
+            <div>
+              <h2 className="max-w-5xl text-[clamp(2.6rem,5vw,5.2rem)] font-semibold leading-[1.01] tracking-[-0.055em] text-[#082c43]">
+                From customer request to production, your workflow should not
+                depend on manual chasing.
+              </h2>
+              <p className="mt-8 max-w-3xl text-lg leading-8 text-[#5f737d]">
+                Foundation Automation helps bridge the gaps between storefronts,
+                order details, artwork, approvals, production notes, internal
+                systems, and customer communication so your team can spend less
+                time moving information and more time getting work produced.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {printCapabilities.map((item) => (
+              <div
+                key={item}
+                className="group flex items-center justify-between rounded-2xl border border-[#cfdbdf] bg-white p-6 text-base font-bold text-[#0e3f5f] shadow-[0_15px_50px_rgba(8,44,67,.04)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_25px_70px_rgba(8,44,67,.1)]"
+              >
+                <span>{item}</span>
+                <ArrowIcon className="h-5 w-5 -rotate-45 text-[#9aabb2] transition duration-300 group-hover:rotate-0 group-hover:text-[#12627e]" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section
         id="approach"
         className="scroll-mt-24 bg-[#06283d] px-5 py-24 text-white sm:px-8 lg:px-12 lg:py-32"
@@ -483,9 +535,10 @@ export default function Home() {
                 From operational friction to a system your team can trust.
               </h2>
               <p className="mt-8 max-w-2xl text-lg leading-8 text-white/60">
-                Every engagement is grounded in the way your business actually
-                operates. We combine process thinking, technical architecture,
-                hands on implementation, and long term support.
+                Every engagement is grounded in the way your shop actually runs.
+                We combine workflow analysis, technical implementation,
+                storefront support, integration work, and long term operational
+                improvement.
               </p>
             </div>
           </div>
@@ -520,13 +573,14 @@ export default function Home() {
             <div>
               <p className="section-kicker">Designed for impact</p>
               <h2 className="mt-8 max-w-xl text-[clamp(2.7rem,4.7vw,5rem)] font-semibold leading-[1] tracking-[-0.055em] text-[#082c43]">
-                Better systems change how the whole business performs.
+                Better workflows change how the whole print business performs.
               </h2>
             </div>
             <p className="max-w-2xl text-lg leading-8 text-[#5f737d] lg:justify-self-end">
               The goal is not automation for the sake of automation. The goal is
-              a business that runs with less friction, clearer information,
-              stronger consistency, and more capacity for growth.
+              a print operation that runs with fewer manual steps, cleaner job
+              information, stronger consistency, better visibility, and more
+              capacity for growth.
             </p>
           </div>
 
@@ -563,9 +617,9 @@ export default function Home() {
             <div>
               <p className="section-kicker">Where we create value</p>
               <p className="mt-6 max-w-sm text-base leading-8 text-[#647984]">
-                Our strongest work happens in operations where technology,
-                production, customer experience, and data all need to move
-                together.
+                Our strongest work is in print environments where storefronts,
+                files, customer requests, job information, production, and
+                support all need to move together.
               </p>
             </div>
             <div className="border-t border-[#ccd8dd]">
@@ -608,20 +662,21 @@ export default function Home() {
               Start with the right problem
             </p>
             <h2 className="mt-8 max-w-5xl text-[clamp(3rem,6.2vw,6.4rem)] font-semibold leading-[.92] tracking-[-0.065em]">
-              Your next stage of growth needs a stronger foundation.
+              Your print shop’s next stage of growth needs a stronger workflow
+              foundation.
             </h2>
           </div>
           <div className="lg:pb-2">
             <p className="text-lg leading-8 text-white/62">
-              Tell us where work is getting stuck, where systems are
-              disconnected, or what your team wants to accomplish. We will help
-              you identify the most valuable place to begin.
+              Tell us where jobs are getting stuck, where systems are
+              disconnected, or where your team is losing time. We will help you
+              identify the most valuable place to begin.
             </p>
             <a
               href="/contact"
               className="primary-button group mt-8 inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 text-sm font-bold text-[#07324b]"
             >
-              Start a conversation
+              Schedule a workflow review
               <ArrowIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
@@ -664,7 +719,10 @@ export default function Home() {
               © {new Date().getFullYear()} Foundation Automation. All rights
               reserved.
             </p>
-            <p>Automation consulting • Systems integration • Applied AI</p>
+            <p>
+              Print workflow automation • Web-to-print support • Systems
+              integration
+            </p>
           </div>
         </div>
       </footer>
