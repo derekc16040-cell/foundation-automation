@@ -248,7 +248,7 @@ export default function Home() {
               href="/contact"
               className="header-cta group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#07324b]"
             >
-              Schedule a workflow review
+              Contact
               <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </nav>
@@ -676,7 +676,7 @@ export default function Home() {
               href="/contact"
               className="primary-button group mt-8 inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 text-sm font-bold text-[#07324b]"
             >
-              Schedule a workflow review
+              Get in touch
               <ArrowIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
