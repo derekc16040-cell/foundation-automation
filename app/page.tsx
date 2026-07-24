@@ -1,3 +1,6 @@
+import { UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
+
 const services = [
   {
     number: "01",
@@ -206,7 +209,9 @@ function ServiceIcon({ name }: { name: string }) {
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+  const isSignedIn = !!user;
   return (
     <main
       id="top"
@@ -244,6 +249,26 @@ export default function Home() {
                 {label}
               </a>
             ))}
+
+            {isSignedIn ? (
+              <>
+                <a
+                  href="/account"
+                  className="nav-link text-sm font-medium text-white/78"
+                >
+                  Account
+                </a>
+                <UserButton afterSignOutUrl="/" />
+              </>
+            ) : (
+              <a
+                href="/client-sign-in"
+                className="nav-link text-sm font-medium text-white/78"
+              >
+                Client Login
+              </a>
+            )}
+
             <a
               href="/contact"
               className="header-cta group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#07324b]"
@@ -283,6 +308,22 @@ export default function Home() {
                   {label}
                 </a>
               ))}
+
+              {isSignedIn ? (
+                <a
+                  href="/account"
+                  className="block rounded-xl px-4 py-3 text-base font-semibold text-white/85 transition hover:bg-white/10 hover:text-white"
+                >
+                  Account
+                </a>
+              ) : (
+                <a
+                  href="/client-sign-in"
+                  className="block rounded-xl px-4 py-3 text-base font-semibold text-white/85 transition hover:bg-white/10 hover:text-white"
+                >
+                  Client Login
+                </a>
+              )}
             </nav>
           </details>
         </div>
