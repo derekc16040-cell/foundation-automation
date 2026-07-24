@@ -258,7 +258,7 @@ export default async function Home() {
                 >
                   Account
                 </a>
-                <UserButton afterSignOutUrl="/" />
+                <UserButton />
               </>
             ) : (
               <a
