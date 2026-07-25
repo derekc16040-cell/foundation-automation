@@ -28,17 +28,6 @@ export const clientPayments: Record<string, ClientPayment[]> = {
     },
   ],
 
-  "client@example.com": [
-    {
-      id: "client-project-payment-5000",
-      title: "Project Payment",
-      description:
-        "Approved one-time project payment for Foundation Automation consulting, automation, integration, or web-to-print support services.",
-      amountCents: 500000,
-      type: "one_time",
-    },
-  ],
-
   "derekc16040@gmail.com": [
     {
       id: "derek-onprintshop-project-balance-2000",
@@ -58,6 +47,24 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       interval: "month",
     },
   ],
+
+  "client@example.com": [
+    {
+      id: "client-project-payment-5000",
+      title: "Project Payment",
+      description:
+        "Approved one-time project payment for Foundation Automation consulting, automation, integration, or web-to-print support services.",
+      amountCents: 500000,
+      type: "one_time",
+    },
+  ],
+};
+
+export const clientStripeCustomerIds: Record<string, string> = {
+  // Add Stripe customer IDs here later if you want the billing portal to work.
+  // Example:
+  // "don@gpidirect.com": "cus_XXXXXXXXXXXXXX",
+  // "derekc16040@gmail.com": "cus_XXXXXXXXXXXXXX",
 };
 
 export function formatUSD(amountCents: number) {

@@ -1,32 +1,19 @@
 import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
-
-const paymentOptions = [
-  {
-    title: "One-Time Payment",
-    description:
-      "Use this for project deposits, remaining balances, one-off fixes, or approved custom work.",
-    buttonText: "Make One-Time Payment",
-    href: "https://buy.stripe.com/3cI8wI2Wo5CQ2rv2SW8Ra00",
-  },
-  {
-    title: "Monthly Support",
-    description:
-      "Set up recurring monthly support, maintenance, optimization, or platform assistance.",
-    buttonText: "Set Up Monthly Payment",
-    href: "PASTE_STRIPE_MONTHLY_PAYMENT_LINK_HERE",
-  },
-  {
-    title: "Manage Billing",
-    description:
-      "Update payment methods, view invoices, and manage existing subscription billing.",
-    buttonText: "Open Billing Portal",
-    href: "PASTE_STRIPE_CUSTOMER_PORTAL_LINK_HERE",
-  },
-];
+import {
+  clientPayments,
+  clientStripeCustomerIds,
+  formatUSD,
+} from "@/lib/clientPayments";
 
 export default async function AccountPage() {
   const user = await currentUser();
+
+  const email =
+    user?.emailAddresses?.[0]?.emailAddress?.toLowerCase() || "";
+
+  const paymentOptions = email ? clientPayments[email] ?? [] : [];
+  const stripeCustomerId = email ? clientStripeCustomerIds[email] : undefined;
 
   return (
     <main className="min-h-screen bg-[#f4f7f8] text-[#082c43]">
@@ -74,7 +61,7 @@ export default async function AccountPage() {
                 Signed in as
               </p>
               <p className="mt-3 text-xl font-semibold text-[#082c43]">
-                {user?.emailAddresses?.[0]?.emailAddress}
+                {email || "Not signed in"}
               </p>
             </div>
           </div>
@@ -82,30 +69,115 @@ export default async function AccountPage() {
       </section>
 
       <section className="px-5 pb-24 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-[1440px] gap-5 md:grid-cols-3">
-          {paymentOptions.map((option) => (
-            <article
-              key={option.title}
-              className="group rounded-[28px] border border-[#cfdbdf] bg-white p-7 shadow-[0_15px_50px_rgba(8,44,67,.04)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(8,44,67,.11)] sm:p-8"
-            >
+        <div className="mx-auto max-w-[1440px]">
+          {paymentOptions.length > 0 ? (
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {paymentOptions.map((option) => (
+                <article
+                  key={option.id}
+                  className="group rounded-[28px] border border-[#cfdbdf] bg-white p-7 shadow-[0_15px_50px_rgba(8,44,67,.04)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(8,44,67,.11)] sm:p-8"
+                >
+                  <div className="flex min-h-[270px] flex-col">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#12627e]">
+                        {option.type === "subscription"
+                          ? "Recurring Payment"
+                          : "One-Time Payment"}
+                      </p>
+
+                      <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-[#082c43]">
+                        {option.title}
+                      </h2>
+
+                      <p className="mt-5 text-[15px] leading-7 text-[#647984]">
+                        {option.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-auto pt-8">
+                      <p className="mb-5 text-4xl font-semibold tracking-[-0.04em] text-[#082c43]">
+                        {formatUSD(option.amountCents)}
+                        {option.type === "subscription" && (
+                          <span className="text-base font-semibold text-[#647984]">
+                            /{option.interval ?? "month"}
+                          </span>
+                        )}
+                      </p>
+
+                      <form
+                        action="/api/create-checkout-session"
+                        method="POST"
+                      >
+                        <input
+                          type="hidden"
+                          name="paymentId"
+                          value={option.id}
+                        />
+
+                        <button
+                          type="submit"
+                          className="inline-flex w-full items-center justify-center rounded-full bg-[#06283d] px-6 py-4 text-sm font-bold text-white transition hover:bg-[#0a354e]"
+                        >
+                          {option.type === "subscription"
+                            ? "Set Up Monthly Payment"
+                            : "Pay Now"}
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </article>
+              ))}
+
+              {stripeCustomerId && (
+                <article className="rounded-[28px] border border-[#cfdbdf] bg-white p-7 shadow-[0_15px_50px_rgba(8,44,67,.04)] sm:p-8">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#12627e]">
+                    Billing Portal
+                  </p>
+
+                  <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-[#082c43]">
+                    Manage Billing
+                  </h2>
+
+                  <p className="mt-5 text-[15px] leading-7 text-[#647984]">
+                    Update payment methods, view invoices, and manage existing
+                    subscription billing.
+                  </p>
+
+                  <form
+                    action="/api/create-billing-portal"
+                    method="POST"
+                    className="mt-8"
+                  >
+                    <button
+                      type="submit"
+                      className="inline-flex w-full items-center justify-center rounded-full bg-[#06283d] px-6 py-4 text-sm font-bold text-white transition hover:bg-[#0a354e]"
+                    >
+                      Open Billing Portal
+                    </button>
+                  </form>
+                </article>
+              )}
+            </div>
+          ) : (
+            <div className="rounded-[28px] border border-[#cfdbdf] bg-white p-8 shadow-[0_15px_50px_rgba(8,44,67,.04)]">
               <h2 className="text-3xl font-semibold tracking-[-0.035em] text-[#082c43]">
-                {option.title}
+                No active payment items
               </h2>
 
-              <p className="mt-5 min-h-[112px] text-[15px] leading-7 text-[#647984]">
-                {option.description}
+              <p className="mt-4 max-w-2xl text-base leading-8 text-[#647984]">
+                There are currently no assigned payments for this account. If
+                you believe this is incorrect, contact Foundation Automation
+                support.
               </p>
 
               <a
-                href={option.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#06283d] px-6 py-4 text-sm font-bold text-white transition hover:bg-[#0a354e]"
+                href="/contact"
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-[#06283d] px-7 py-4 text-sm font-bold text-white transition hover:bg-[#0a354e]"
               >
-                {option.buttonText}
+                Contact Support
               </a>
-            </article>
-          ))}
+            </div>
+          )}
         </div>
       </section>
 
