@@ -95,6 +95,45 @@ const comparisonRows = [
   },
 ];
 
+const transformationSteps = [
+  {
+    phase: "Discover",
+    title: "Find the work your team should not have to repeat.",
+    text:
+      "We identify repetitive tasks, duplicate entry, unclear handoffs, bottlenecks, and disconnected systems that consume time your team could be spending on customers, production, and growth.",
+    caption: "Hidden friction becomes visible.",
+    highlights: [
+      "Map how work moves today",
+      "Identify avoidable repetition",
+      "Prioritize high-impact improvements",
+    ],
+  },
+  {
+    phase: "Connect",
+    title: "Connect the tools, people, and information already in place.",
+    text:
+      "We design a practical solution around the systems that already support your business, combining automation, integrations, improved file handling, cleaner interfaces, and AI where it provides real value.",
+    caption: "The process becomes one connected workflow.",
+    highlights: [
+      "Connect existing platforms",
+      "Improve routing and communication",
+      "Create clear and consistent next steps",
+    ],
+  },
+  {
+    phase: "Operate",
+    title: "Give your team a clearer system and a partner behind it.",
+    text:
+      "Your team gets a repeatable workflow with better visibility, clear ownership, and less administrative friction. Foundation Automation remains available for support, improvements, and new opportunities as your business evolves.",
+    caption: "Your team stays informed, supported, and ready for what comes next.",
+    highlights: [
+      "Clear ownership and visibility",
+      "Ongoing support when needed",
+      "A system that grows with the business",
+    ],
+  },
+];
+
 export default function FoundationDemoClient() {
   const [activeStep, setActiveStep] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -341,112 +380,194 @@ export default function FoundationDemoClient() {
           </div>
         </section>
 
-        <section className={styles.storySection}>
-          <div className={styles.storyVisualWrap}>
-            <div className={styles.storyVisual}>
-              <div className={styles.storyTopline}>
-                <span>Transformation preview</span>
-                <strong>0{activeStep + 1} / 03</strong>
-              </div>
 
-              <div className={styles.storyScreen}>
-                <div className={`${styles.storyScene} ${activeStep === 0 ? styles.sceneActive : ""}`}>
-                  <div className={styles.inboxScene}>
-                    <div className={styles.sceneSidebar} />
-                    <div className={styles.emailStack}>
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                    </div>
-                  </div>
-                  <div className={styles.storyCaption}>
-                    <small>Before</small>
-                    <strong>Requests arrive everywhere.</strong>
-                  </div>
-                </div>
-
-                <div className={`${styles.storyScene} ${activeStep === 1 ? styles.sceneActive : ""}`}>
-                  <div className={styles.flowScene}>
-                    <div className={styles.flowNode}>Intake</div>
-                    <span className={styles.flowArrow}>→</span>
-                    <div className={styles.flowNode}>Rules</div>
-                    <span className={styles.flowArrow}>→</span>
-                    <div className={styles.flowNode}>Action</div>
-                  </div>
-                  <div className={styles.storyCaption}>
-                    <small>During</small>
-                    <strong>The process becomes structured.</strong>
-                  </div>
-                </div>
-
-                <div className={`${styles.storyScene} ${activeStep === 2 ? styles.sceneActive : ""}`}>
-                  <div className={styles.dashboardScene}>
-                    <div className={styles.dashboardMetric}>
-                      <span>Open work</span>
-                      <strong>18</strong>
-                    </div>
-                    <div className={styles.dashboardMetric}>
-                      <span>On track</span>
-                      <strong>94%</strong>
-                    </div>
-                    <div className={styles.dashboardRows}>
-                      <span />
-                      <span />
-                      <span />
-                    </div>
-                  </div>
-                  <div className={styles.storyCaption}>
-                    <small>After</small>
-                    <strong>Your team knows what happens next.</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.storyDots}>
-                {[0, 1, 2].map((index) => (
-                  <span className={activeStep === index ? styles.dotActive : ""} key={index} />
-                ))}
-              </div>
-            </div>
+        <section className={styles.journeySection} id="walkthrough">
+          <div className={`${styles.journeyIntro} ${styles.reveal}`}>
+            <span className={styles.kicker}>How transformation happens</span>
+            <h2>Watch scattered work become a connected operation.</h2>
+            <p>
+              The goal is not to add more software for the sake of it. The goal is to
+              understand the work, connect the right pieces, and leave your team with a
+              system that feels simpler every time they use it.
+            </p>
           </div>
 
-          <div className={styles.storySteps}>
-            <article
-              data-story-step="0"
-              className={`${styles.storyStep} ${activeStep === 0 ? styles.storyStepActive : ""}`}
-            >
-              <span className={styles.kicker}>Step 01</span>
-              <h2>Find the work that should not require a person.</h2>
-              <p>
-                We start by identifying repetitive tasks, duplicate entry, unclear handoffs,
-                bottlenecks, and places where your team is compensating for disconnected systems.
-              </p>
-            </article>
+          <div className={styles.journeyLayout}>
+            <div className={styles.journeyStageWrap}>
+              <div className={styles.journeyStage}>
+                <div className={styles.journeyStageHeader}>
+                  <span>Live workflow preview</span>
+                  <strong>0{activeStep + 1} / 03</strong>
+                </div>
 
-            <article
-              data-story-step="1"
-              className={`${styles.storyStep} ${activeStep === 1 ? styles.storyStepActive : ""}`}
-            >
-              <span className={styles.kicker}>Step 02</span>
-              <h2>Connect the process instead of replacing everything.</h2>
-              <p>
-                The best solution may combine automation, integration, a new interface,
-                improved file handling, and practical AI around the tools you already use.
-              </p>
-            </article>
+                <div className={styles.journeyProgress} aria-hidden="true">
+                  <span style={{ width: `${((activeStep + 1) / 3) * 100}%` }} />
+                </div>
 
-            <article
-              data-story-step="2"
-              className={`${styles.storyStep} ${activeStep === 2 ? styles.storyStepActive : ""}`}
-            >
-              <span className={styles.kicker}>Step 03</span>
-              <h2>Create a system your team can actually operate.</h2>
-              <p>
-                The finished workflow should be easier to understand, easier to manage,
-                and more scalable without relying on additional people for every increase in volume.
-              </p>
-            </article>
+                <div className={styles.journeyViewport}>
+                  <div
+                    className={`${styles.journeyScene} ${
+                      activeStep === 0 ? styles.journeySceneActive : ""
+                    }`}
+                  >
+                    <div className={styles.scatterCanvas}>
+                      <div className={`${styles.scatterItem} ${styles.scatterEmail}`}>
+                        <small>Email</small>
+                        <strong>New request</strong>
+                      </div>
+                      <div className={`${styles.scatterItem} ${styles.scatterSheet}`}>
+                        <small>Spreadsheet</small>
+                        <strong>Job details</strong>
+                      </div>
+                      <div className={`${styles.scatterItem} ${styles.scatterFiles}`}>
+                        <small>Files</small>
+                        <strong>Artwork folder</strong>
+                      </div>
+                      <div className={`${styles.scatterItem} ${styles.scatterApproval}`}>
+                        <small>Approval</small>
+                        <strong>Waiting on reply</strong>
+                      </div>
+                      <div className={styles.scatterCenter}>
+                        <span />
+                        <strong>Disconnected handoffs</strong>
+                        <small>Important details are spread across people and systems</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className={`${styles.journeyScene} ${
+                      activeStep === 1 ? styles.journeySceneActive : ""
+                    }`}
+                  >
+                    <div className={styles.routeCanvas}>
+                      <div className={styles.routeTrack}>
+                        <span className={styles.routeTrackFill} />
+                        <i className={`${styles.routeDot} ${styles.routeDotOne}`} />
+                        <i className={`${styles.routeDot} ${styles.routeDotTwo}`} />
+                        <i className={`${styles.routeDot} ${styles.routeDotThree}`} />
+                      </div>
+
+                      {[
+                        ["01", "Intake", "Request captured"],
+                        ["02", "Validate", "Details checked"],
+                        ["03", "Route", "Right system updated"],
+                        ["04", "Notify", "Team sees next step"],
+                      ].map(([number, title, detail]) => (
+                        <div className={styles.routeNode} key={number}>
+                          <span>{number}</span>
+                          <strong>{title}</strong>
+                          <small>{detail}</small>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div
+                    className={`${styles.journeyScene} ${
+                      activeStep === 2 ? styles.journeySceneActive : ""
+                    }`}
+                  >
+                    <div className={styles.resultCanvas}>
+                      <div className={styles.resultMetrics}>
+                        <div>
+                          <small>On track</small>
+                          <strong>94%</strong>
+                          <span className={styles.metricLine}><i style={{ width: "94%" }} /></span>
+                        </div>
+                        <div>
+                          <small>Repetitive steps streamlined</small>
+                          <strong>12</strong>
+                          <span className={styles.metricLine}><i style={{ width: "76%" }} /></span>
+                        </div>
+                        <div>
+                          <small>Workflow status</small>
+                          <strong className={styles.connectedStatus}>Connected</strong>
+                          <span className={styles.metricLine}><i style={{ width: "100%" }} /></span>
+                        </div>
+                      </div>
+
+                      <div className={styles.activityPanel}>
+                        <div className={styles.activityHeader}>
+                          <span>Current work</span>
+                          <small>Live view</small>
+                        </div>
+                        {["Request received", "Files validated", "Production notified"].map(
+                          (label, index) => (
+                            <div className={styles.activityRow} key={label}>
+                              <span>{String(index + 1).padStart(2, "0")}</span>
+                              <strong>{label}</strong>
+                              <i />
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.journeyStageFooter}>
+                  <div>
+                    <small>{transformationSteps[activeStep].phase}</small>
+                    <strong>{transformationSteps[activeStep].caption}</strong>
+                  </div>
+                  <span>Scroll to continue ↓</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.journeySteps}>
+              {transformationSteps.map((step, index) => (
+                <article
+                  data-story-step={index}
+                  className={`${styles.journeyStep} ${
+                    activeStep === index ? styles.journeyStepActive : ""
+                  }`}
+                  key={step.phase}
+                >
+                  <div className={styles.journeyStepNumber}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <i />
+                  </div>
+                  <span className={styles.kicker}>{step.phase}</span>
+                  <h2>{step.title}</h2>
+                  <p>{step.text}</p>
+
+                  <div className={styles.stepHighlights}>
+                    {step.highlights.map((highlight) => (
+                      <span key={highlight}>{highlight}</span>
+                    ))}
+                  </div>
+
+                  {index === 0 && (
+                    <div className={`${styles.mobileJourneyVisual} ${styles.mobileScatter}`}>
+                      <span>Email</span>
+                      <span>Spreadsheet</span>
+                      <span>Files</span>
+                      <strong>Manual handoffs</strong>
+                    </div>
+                  )}
+
+                  {index === 1 && (
+                    <div className={`${styles.mobileJourneyVisual} ${styles.mobileRoute}`}>
+                      <span>Intake</span>
+                      <i />
+                      <span>Validate</span>
+                      <i />
+                      <span>Route</span>
+                    </div>
+                  )}
+
+                  {index === 2 && (
+                    <div className={`${styles.mobileJourneyVisual} ${styles.mobileResult}`}>
+                      <div><small>On track</small><strong>94%</strong></div>
+                      <div><small>Status</small><strong>Connected</strong></div>
+                      <span><i /></span>
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 

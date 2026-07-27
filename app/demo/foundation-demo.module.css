@@ -428,7 +428,8 @@
 .costIntro h2,
 .processIntro h2,
 .workflowCopy h2,
-.storyStep h2,
+.journeyIntro h2,
+.journeyStep h2,
 .ctaContent h2 {
   margin: 16px 0 0;
   font-family: Georgia, "Times New Roman", serif;
@@ -441,7 +442,8 @@
 .sectionHeading p,
 .costIntro p,
 .workflowCopy > p,
-.storyStep p,
+.journeyIntro p,
+.journeyStep p,
 .ctaContent p {
   max-width: 760px;
   margin: 24px 0 0;
@@ -565,197 +567,509 @@
   animation: pulseDot 2.5s ease-in-out infinite;
 }
 
-.storySection {
-  display: grid;
-  grid-template-columns: minmax(480px, 1fr) minmax(0, 1fr);
-  background: var(--navy-deep);
-  color: white;
-}
-
-.storyVisualWrap {
-  position: relative;
-  align-self: stretch;
-  min-width: 0;
-}
-
-.storyVisual {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  min-height: 680px;
-  padding: 72px clamp(28px, 5vw, 74px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.journeySection {
+  padding: 120px clamp(22px, 6vw, 96px);
   background:
-    radial-gradient(circle at 60% 38%, rgba(24,182,226,0.15), transparent 34%),
-    var(--navy-deep);
+    radial-gradient(circle at 12% 18%, rgba(24, 182, 226, 0.09), transparent 26%),
+    linear-gradient(180deg, #f8fafb 0%, #eef4f7 100%);
 }
 
-.storyTopline {
-  margin-bottom: 22px;
+.journeyIntro {
+  max-width: 980px;
+  margin-bottom: 84px;
+}
+
+.journeyIntro p {
+  max-width: 780px;
+}
+
+.journeyLayout {
+  display: grid;
+  grid-template-columns: minmax(460px, 0.96fr) minmax(0, 1.04fr);
+  gap: clamp(58px, 7vw, 110px);
+  align-items: start;
+}
+
+.journeyStageWrap {
+  position: relative;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.journeyStage {
+  position: sticky;
+  top: 92px;
+  min-height: 650px;
+  padding: 26px;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(24, 182, 226, 0.18), transparent 30%),
+    var(--navy-deep);
+  color: white;
+  box-shadow: 0 42px 100px rgba(23, 34, 46, 0.2);
+}
+
+.journeyStageHeader {
+  padding: 2px 2px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: rgba(255,255,255,0.58);
+  gap: 18px;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-.storyScreen {
-  position: relative;
-  min-height: 500px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 28px;
-  background: rgba(255,255,255,0.055);
-  box-shadow: 0 40px 90px rgba(0,0,0,0.24);
+.journeyStageHeader strong {
+  color: white;
+  font-size: 10px;
 }
 
-.storyScene {
+.journeyProgress {
+  height: 3px;
+  margin: 0 2px 22px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.journeyProgress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transition: width 500ms ease;
+}
+
+.journeyViewport {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background:
+    linear-gradient(rgba(39, 52, 67, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 52, 67, 0.04) 1px, transparent 1px),
+    #f7fafc;
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+.journeyScene {
   position: absolute;
   inset: 0;
-  padding: 34px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: clamp(20px, 3vw, 34px);
   opacity: 0;
-  transform: translateY(24px) scale(0.98);
+  pointer-events: none;
+  transform: translateY(26px) scale(0.98);
   transition: opacity 500ms ease, transform 500ms ease;
 }
 
-.sceneActive {
+.journeySceneActive {
   opacity: 1;
+  pointer-events: auto;
   transform: translateY(0) scale(1);
 }
 
-.inboxScene,
-.flowScene,
-.dashboardScene {
-  flex: 1;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.95);
-  color: var(--text);
+.scatterCanvas {
+  position: relative;
+  height: 100%;
+  min-height: 360px;
 }
 
-.inboxScene {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  overflow: hidden;
-}
-
-.sceneSidebar { background: #e7eef2; }
-.emailStack { padding: 28px; display: grid; gap: 16px; align-content: start; }
-.emailStack span { height: 56px; border: 1px solid var(--line); border-radius: 12px; background: white; }
-.emailStack span:nth-child(2) { transform: translateX(16px); }
-.emailStack span:nth-child(3) { transform: translateX(-8px); }
-
-.flowScene {
-  padding: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.flowNode {
-  min-width: 120px;
-  padding: 22px 16px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--sky);
-  text-align: center;
-  font-weight: 800;
-}
-
-.flowArrow {
-  color: var(--blue);
-  font-size: 28px;
-  animation: arrowPulse 2s ease-in-out infinite;
-}
-
-.dashboardScene {
-  padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.dashboardMetric {
-  min-height: 140px;
-  padding: 20px;
+.scatterItem {
+  position: absolute;
+  width: 150px;
+  min-height: 86px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 7px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: white;
+  box-shadow: 0 18px 38px rgba(23, 34, 46, 0.1);
+  animation: journeyCardFloat 6s ease-in-out infinite;
 }
 
-.dashboardMetric span { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
-.dashboardMetric strong { color: var(--blue); font-size: 44px; }
-.dashboardRows { grid-column: 1 / -1; display: grid; gap: 12px; }
-.dashboardRows span { height: 42px; border-radius: 10px; background: #eef4f7; }
+.scatterItem small {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-.storyCaption {
-  padding-top: 24px;
+.scatterItem strong {
+  font-size: 13px;
+}
+
+.scatterEmail { top: 5%; left: 2%; transform: rotate(-3deg); }
+.scatterSheet { top: 4%; right: 2%; transform: rotate(2deg); animation-delay: 600ms; }
+.scatterFiles { bottom: 5%; left: 5%; transform: rotate(2deg); animation-delay: 1s; }
+.scatterApproval { right: 4%; bottom: 6%; transform: rotate(-2deg); animation-delay: 1.5s; }
+
+.scatterCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(220px, 48%);
+  min-height: 130px;
+  padding: 22px;
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 22px;
+  background: var(--navy-deep);
+  color: white;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 22px 48px rgba(23, 34, 46, 0.24);
 }
 
-.storyCaption small { color: var(--cyan); font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
-.storyCaption strong { max-width: 360px; font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 500; text-align: right; }
-.storyDots { margin-top: 22px; display: flex; gap: 8px; }
-.storyDots span { width: 28px; height: 3px; border-radius: 999px; background: rgba(255,255,255,0.18); transition: width 250ms ease, background 250ms ease; }
-.storyDots .dotActive { width: 54px; background: var(--cyan); }
-
-.storySteps {
-  background: #f6f8f9;
-  color: var(--text);
+.scatterCenter > span {
+  width: 11px;
+  height: 11px;
+  margin: 0 auto 4px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0 8px rgba(24, 182, 226, 0.12);
+  animation: pulseDot 2.5s ease-in-out infinite;
 }
 
-.storyStep {
+.scatterCenter strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.scatterCenter small {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.routeCanvas {
   position: relative;
-  min-height: 100vh;
-  padding: 100px clamp(32px, 7vw, 100px);
+  height: 100%;
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 13px;
+}
+
+.routeTrack {
+  position: absolute;
+  top: 50%;
+  right: 9%;
+  left: 9%;
+  height: 3px;
+  overflow: visible;
+  border-radius: 999px;
+  background: rgba(34, 120, 184, 0.16);
+  transform: translateY(-50%);
+}
+
+.routeTrackFill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transform-origin: left;
+  animation: routeGrow 1s both ease-out;
+}
+
+.routeDot {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0 7px rgba(24, 182, 226, 0.14);
+  transform: translate(-50%, -50%);
+}
+
+.routeDotOne { left: 25%; }
+.routeDotTwo { left: 50%; }
+.routeDotThree { left: 75%; }
+
+.routeNode {
+  position: relative;
+  z-index: 2;
+  min-height: 138px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: white;
+  text-align: center;
+  box-shadow: 0 18px 38px rgba(23, 34, 46, 0.09);
+  transition: transform 350ms ease;
+}
+
+.journeySceneActive .routeNode:nth-of-type(2) { animation: nodeRise 600ms 80ms both ease-out; }
+.journeySceneActive .routeNode:nth-of-type(3) { animation: nodeRise 600ms 180ms both ease-out; }
+.journeySceneActive .routeNode:nth-of-type(4) { animation: nodeRise 600ms 280ms both ease-out; }
+.journeySceneActive .routeNode:nth-of-type(5) { animation: nodeRise 600ms 380ms both ease-out; }
+
+.routeNode > span {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.routeNode strong { font-size: 13px; }
+.routeNode small { color: var(--muted); font-size: 9px; line-height: 1.4; }
+
+.resultCanvas {
+  height: 100%;
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 18px;
+}
+
+.resultMetrics {
+  display: grid;
+  gap: 12px;
+}
+
+.resultMetrics > div {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 16px 34px rgba(23, 34, 46, 0.07);
+}
+
+.resultMetrics small,
+.activityHeader {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.resultMetrics strong {
+  color: var(--blue);
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+.resultMetrics .connectedStatus {
+  color: #1c8b67;
+  font-size: 18px;
+}
+
+.metricLine {
+  height: 6px;
+  margin-top: auto;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eaf1f5;
+}
+
+.metricLine i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transform-origin: left;
+  animation: routeGrow 900ms 240ms both ease-out;
+}
+
+.activityPanel {
+  padding: 20px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 18px 40px rgba(23, 34, 46, 0.08);
+}
+
+.activityHeader {
+  padding-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.activityHeader small {
+  color: #1c8b67;
+}
+
+.activityRow {
+  min-height: 64px;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 34px 1fr 12px;
+  gap: 10px;
+  align-items: center;
+  border-radius: 12px;
+  background: #f3f7f9;
+}
+
+.activityRow > span {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.activityRow strong {
+  font-size: 11px;
+}
+
+.activityRow i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1c8b67;
+  box-shadow: 0 0 0 5px rgba(28, 139, 103, 0.1);
+}
+
+.journeyStageFooter {
+  min-height: 116px;
+  padding: 24px 4px 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.journeyStageFooter > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.journeyStageFooter small {
+  color: var(--cyan);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.journeyStageFooter strong {
+  max-width: 420px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 2vw, 29px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.journeyStageFooter > span {
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.journeySteps {
+  min-width: 0;
+}
+
+.journeyStep {
+  position: relative;
+  min-height: 82vh;
+  padding: clamp(72px, 8vh, 110px) 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-bottom: 1px solid var(--line);
-  opacity: 0.5;
-  transition: opacity 420ms ease, background 420ms ease;
+  opacity: 0.38;
+  transform: translateY(18px);
+  transition: opacity 450ms ease, transform 450ms ease;
 }
 
-.storyStep::before {
-  content: "";
-  position: absolute;
-  top: 20%;
-  bottom: 20%;
-  left: 0;
-  width: 3px;
+.journeyStep:first-child {
+  padding-top: 20px;
+}
+
+.journeyStep:last-child {
+  border-bottom: 0;
+}
+
+.journeyStepActive {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.journeyStepNumber {
+  margin-bottom: 38px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.journeyStepNumber span {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.journeyStepNumber i {
+  width: 54px;
+  height: 2px;
   border-radius: 999px;
-  background: linear-gradient(var(--blue), var(--cyan));
-  opacity: 0;
-  transform: scaleY(0.4);
-  transition: opacity 420ms ease, transform 420ms ease;
+  background: rgba(34, 120, 184, 0.18);
+  transition: width 400ms ease, background 400ms ease;
 }
 
-.storyStepActive {
-  opacity: 1;
-  background: #ffffff;
+.journeyStepActive .journeyStepNumber i {
+  width: 108px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
 }
 
-.storyStepActive::before {
-  opacity: 1;
-  transform: scaleY(1);
+.journeyStep h2 {
+  max-width: 720px;
 }
 
-.storyStep h2 { max-width: 720px; }
-.storyStep p { max-width: 650px; }
+.journeyStep p {
+  max-width: 660px;
+}
+
+.stepHighlights {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stepHighlights span {
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.mobileJourneyVisual {
+  display: none;
+}
 
 .servicesGrid {
   display: grid;
@@ -1013,15 +1327,48 @@
 @keyframes barPulse { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
 @keyframes pulseDot { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 @keyframes arrowPulse { 0%,100% { transform: translateX(0); opacity: 0.55; } 50% { transform: translateX(6px); opacity: 1; } }
+@keyframes journeyCardFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+@keyframes routeGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes nodeRise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mobileRoutePulse {
+  0%, 100% { opacity: 0.35; transform: scaleX(0.65); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
 
 @media (max-width: 1120px) {
   .hero { grid-template-columns: 1fr; }
   .heroVisual { width: min(100%, 760px); margin: 0 auto; }
   .problemGrid,
   .servicesGrid { grid-template-columns: repeat(2, 1fr); }
-  .storySection { grid-template-columns: 1fr; }
-  .storyVisual { position: relative; top: auto; height: auto; min-height: 760px; }
-  .storyStep { min-height: auto; padding-top: 90px; padding-bottom: 90px; }
+  .journeyLayout { grid-template-columns: 1fr; }
+  .journeyStageWrap { display: none; }
+  .journeySteps { display: grid; gap: 28px; }
+  .journeyStep {
+    min-height: auto;
+    padding: 54px;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: rgba(255,255,255,0.78);
+    opacity: 0.55;
+    transform: translateY(24px) scale(0.985);
+  }
+  .journeyStep:first-child { padding-top: 54px; }
+  .journeyStepActive {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background: white;
+    box-shadow: 0 28px 65px rgba(23,34,46,0.1);
+  }
+  .mobileJourneyVisual { display: block; }
   .workflowSection { grid-template-columns: 1fr; }
 }
 
@@ -1071,25 +1418,107 @@
   .problemGrid,
   .servicesGrid { grid-template-columns: 1fr; }
   .problemCard { min-height: 340px; }
-  .storyVisual { min-height: 610px; padding: 54px 18px; }
-  .storyScreen { min-height: 500px; }
-  .storyScene { padding: 18px; }
-  .flowScene { padding: 18px; gap: 8px; }
-  .flowNode { min-width: 80px; padding: 16px 8px; font-size: 11px; }
-  .flowArrow { font-size: 20px; }
-  .dashboardMetric strong { font-size: 32px; }
-  .storyCaption {
-    padding-top: 20px;
-    align-items: start;
-    flex-direction: column;
-    gap: 8px;
+  .journeySection { padding-top: 82px; padding-bottom: 82px; }
+  .journeyIntro { margin-bottom: 48px; }
+  .journeyStep { padding: 34px 24px; border-radius: 20px; }
+  .journeyStep:first-child { padding-top: 34px; }
+  .journeyStep h2 { font-size: clamp(36px, 10vw, 50px); }
+  .journeyStepNumber { margin-bottom: 26px; }
+  .stepHighlights { margin-top: 26px; }
+  .mobileJourneyVisual {
+    min-height: 220px;
+    margin-top: 34px;
+    padding: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: #f5f9fb;
+    opacity: 0.5;
+    transform: translateY(16px);
+    transition: opacity 450ms ease, transform 450ms ease;
   }
-
-  .storyCaption strong {
-    max-width: 100%;
-    text-align: left;
-    font-size: 23px;
-    line-height: 1.15;
+  .journeyStepActive .mobileJourneyVisual { opacity: 1; transform: translateY(0); }
+  .mobileScatter { position: relative; }
+  .mobileScatter span {
+    position: absolute;
+    min-width: 96px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: white;
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 800;
+    text-align: center;
+    box-shadow: 0 12px 24px rgba(23,34,46,0.08);
+  }
+  .mobileScatter span:nth-child(1) { top: 18px; left: 14px; transform: rotate(-3deg); }
+  .mobileScatter span:nth-child(2) { top: 24px; right: 12px; transform: rotate(3deg); }
+  .mobileScatter span:nth-child(3) { left: 50%; bottom: 18px; transform: translateX(-50%); }
+  .mobileScatter strong {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 16px;
+    border-radius: 14px;
+    background: var(--navy-deep);
+    color: white;
+    font-size: 12px;
+    transform: translate(-50%, -50%);
+  }
+  .mobileRoute {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+  }
+  .mobileRoute span {
+    flex: 1;
+    padding: 20px 8px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: white;
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 800;
+    text-align: center;
+  }
+  .mobileRoute i {
+    width: 18px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    animation: mobileRoutePulse 1.8s ease-in-out infinite;
+  }
+  .mobileResult {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .mobileResult > div {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: white;
+  }
+  .mobileResult small { color: var(--muted); font-size: 9px; text-transform: uppercase; }
+  .mobileResult strong { color: var(--blue); font-size: 24px; }
+  .mobileResult > span {
+    grid-column: 1 / -1;
+    height: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e6eef2;
+  }
+  .mobileResult > span i {
+    display: block;
+    width: 94%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    animation: routeGrow 900ms both ease-out;
   }
   .boardCanvas { min-height: 470px; }
   .boardNode { width: 145px; }
