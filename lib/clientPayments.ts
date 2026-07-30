@@ -8,7 +8,7 @@ export type ClientPayment = {
 };
 
 export const clientPayments: Record<string, ClientPayment[]> = {
-  "don@gpidirect.com": [
+  "derekc@foundationautomation.org": [
     {
       id: "don-onprintshop-project-balance-2000",
       title: "OnPrintShop Project Balance",
@@ -22,7 +22,7 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       title: "Monthly Technical Support",
       description:
         "Recurring monthly support for OnPrintShop assistance, troubleshooting, workflow improvements, and ongoing technical help.",
-      amountCents: 100000,
+      amountCents: 0.00,
       type: "subscription",
       interval: "month",
     },
