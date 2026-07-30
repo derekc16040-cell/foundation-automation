@@ -10,14 +10,6 @@ export type ClientPayment = {
 export const clientPayments: Record<string, ClientPayment[]> = {
   "don@gpidirect.com": [
     {
-      id: "don-onprintshop-project-balance-2000",
-      title: "OnPrintShop Project Balance",
-      description:
-        "Remaining balance for approved OnPrintShop project work, storefront support, workflow assistance, and technical consulting.",
-      amountCents: 200000,
-      type: "one_time",
-    },
-    {
       id: "don-monthly-support-1000",
       title: "Monthly Technical Support",
       description:
