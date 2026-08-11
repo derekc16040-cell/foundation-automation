@@ -22,22 +22,22 @@ export const clientPayments: Record<string, ClientPayment[]> = {
 
   "derekc16040@gmail.com": [
     {
-      id: "derek-onprintshop-project-balance-2000",
+      id: "Scott-project-balance-4500",
       title: "OnPrintShop Project Balance",
       description:
-        "Remaining balance for approved OnPrintShop project work, storefront support, workflow assistance, and technical consulting.",
-      amountCents: 200000,
+        "Balance for OnPrintShop and Pace integration project.",
+      amountCents: 450000,
       type: "one_time",
     },
     {
-      id: "derek-monthly-support-1000",
-      title: "Monthly Technical Support",
+      id: "Scott-monthly-support-0",
+      title: "Monthly Support",
       description:
-        "Recurring monthly support for OnPrintShop assistance, troubleshooting, workflow improvements, and ongoing technical help.",
-      amountCents: 100000,
+        "TBD - Recurring monthly support",
+      amountCents: 0.00,
       type: "subscription",
       interval: "month",
-    },
+    }, 
   ],
 
   "client@example.com": [
@@ -49,6 +49,26 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       amountCents: 500000,
       type: "one_time",
     },
+  ],
+
+  "scott@rcpionline.com": [
+    {
+      id: "Scott-project-balance-4500",
+      title: "OnPrintShop Project Balance",
+      description:
+        "Balance for OnPrintShop and Pace integration project.",
+      amountCents: 450000,
+      type: "one_time",
+    },
+    {
+      id: "Scott-monthly-support-0",
+      title: "Monthly Support",
+      description:
+        "TBD - Recurring monthly support",
+      amountCents: 0.00,
+      type: "subscription",
+      interval: "month",
+    }, 
   ],
 };
 
