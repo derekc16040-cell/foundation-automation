@@ -15,6 +15,19 @@ export default async function AccountPage() {
   const paymentOptions = email ? clientPayments[email] ?? [] : [];
   const stripeCustomerId = email ? clientStripeCustomerIds[email] : undefined;
 
+  const paidPayments =
+  (user?.privateMetadata?.paidPayments as
+    | Record<
+        string,
+        {
+          paid?: boolean;
+          amountCents?: number;
+          stripeSessionId?: string;
+          paidAt?: string;
+        }
+      >
+    | undefined) ?? {};
+
   return (
     <main className="min-h-screen bg-[#f4f7f8] text-[#082c43]">
       <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#06283d]/88 backdrop-blur-xl">
@@ -72,7 +85,13 @@ export default async function AccountPage() {
         <div className="mx-auto max-w-[1440px]">
           {paymentOptions.length > 0 ? (
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {paymentOptions.map((option) => (
+              {paymentOptions.map((option) => {
+                const isPaid =
+                  option.type === "one_time" &&
+                  paidPayments[option.id]?.paid === true;
+
+                return (
+
                 <article
                   key={option.id}
                   className="group rounded-[28px] border border-[#cfdbdf] bg-white p-7 shadow-[0_15px_50px_rgba(8,44,67,.04)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(8,44,67,.11)] sm:p-8"
@@ -96,7 +115,7 @@ export default async function AccountPage() {
 
                     <div className="mt-auto pt-8">
                       <p className="mb-5 text-4xl font-semibold tracking-[-0.04em] text-[#082c43]">
-                        {formatUSD(option.amountCents)}
+                        {isPaid ? "$0" : formatUSD(option.amountCents)}
                         {option.type === "subscription" && (
                           <span className="text-base font-semibold text-[#647984]">
                             /{option.interval ?? "month"}
@@ -104,29 +123,36 @@ export default async function AccountPage() {
                         )}
                       </p>
 
-                      <form
-                        action="/api/create-checkout-session"
-                        method="POST"
-                      >
-                        <input
-                          type="hidden"
-                          name="paymentId"
-                          value={option.id}
-                        />
-
-                        <button
-                          type="submit"
-                          className="inline-flex w-full items-center justify-center rounded-full bg-[#06283d] px-6 py-4 text-sm font-bold text-white transition hover:bg-[#0a354e]"
+                      {isPaid && option.type === "one_time" ? (
+                        <div className="inline-flex w-full items-center justify-center rounded-full bg-green-100 px-6 py-4 text-sm font-bold text-green-800">
+                          Paid in Full
+                        </div>
+                      ) : (
+                        <form
+                          action="/api/create-checkout-session"
+                          method="POST"
                         >
-                          {option.type === "subscription"
-                            ? "Set Up Monthly Payment"
-                            : "Pay Now"}
-                        </button>
-                      </form>
+                          <input
+                            type="hidden"
+                            name="paymentId"
+                            value={option.id}
+                          />
+
+                          <button
+                            type="submit"
+                            className="inline-flex w-full items-center justify-center rounded-full bg-[#06283d] px-6 py-4 text-sm font-bold text-white transition hover:bg-[#0a354e]"
+                          >
+                            {option.type === "subscription"
+                              ? "Set Up Monthly Payment"
+                              : "Pay Now"}
+                          </button>
+                        </form>
+                      )}
                     </div>
                   </div>
                 </article>
-              ))}
+              );
+              })}
 
               {stripeCustomerId && (
                 <article className="rounded-[28px] border border-[#cfdbdf] bg-white p-7 shadow-[0_15px_50px_rgba(8,44,67,.04)] sm:p-8">
