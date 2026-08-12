@@ -26,7 +26,7 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       title: "Project Balance",
       description:
         "Balance for OnPrintShop and Pace integration project.",
-      amountCents: 450000,
+      amountCents: 1000,
       type: "one_time",
     },
     {
