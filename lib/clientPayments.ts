@@ -22,7 +22,7 @@ export const clientPayments: Record<string, ClientPayment[]> = {
 
   "derekc16040@gmail.com": [
     {
-      id: "Scott-project-balance-4500",
+      id: "Scott-new-project-balance-4500",
       title: "Project Balance",
       description:
         "Balance for OnPrintShop and Pace integration project.",
