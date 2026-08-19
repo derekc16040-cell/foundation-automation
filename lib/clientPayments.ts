@@ -34,7 +34,7 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       title: "Monthly Support",
       description:
         "TBD - Recurring monthly support",
-      amountCents: 0.00,
+      amountCents: 75000,
       type: "subscription",
       interval: "month",
     }, 
@@ -57,15 +57,15 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       title: "Project Balance",
       description:
         "Balance for OnPrintShop and Pace integration project.",
-      amountCents: 450000,
+      amountCents: 0.00,
       type: "one_time",
     },
     {
       id: "Scott-monthly-support-0",
       title: "Monthly Support",
       description:
-        "TBD - Recurring monthly support",
-      amountCents: 0.00,
+        "OPS Monthly Support",
+      amountCents: 75000,
       type: "subscription",
       interval: "month",
     }, 
