@@ -70,6 +70,27 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       interval: "month",
     }, 
   ],
+
+  "jane@rcpionline.com": [
+    {
+      id: "Scott-project-balance-4500",
+      title: "Project Balance",
+      description:
+        "TBD - Project",
+      amountCents: 0.00,
+      type: "one_time",
+    },
+    {
+      id: "RCPI-monthly-support-0",
+      title: "Monthly Support",
+      description:
+        "OPS Monthly Support",
+      amountCents: 75000,
+      type: "subscription",
+      interval: "month",
+    }, 
+  ],
+
 };
 
 export const clientStripeCustomerIds: Record<string, string> = {
