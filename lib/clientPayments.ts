@@ -30,22 +30,22 @@ export const clientPayments: Record<string, ClientPayment[]> = {
 
   "derekc16040@gmail.com": [
     {
-      id: "Scott-new-project-balance-4500",
-      title: "Project Balance",
+      id: "Donalyn-one-time-monthly-support-1000",
+      title: "Total Balance",
       description:
-        "Balance for OnPrintShop and Pace integration project.",
-      amountCents: 1000,
+        "Balance for Monthly Ongoing Maintenance and Support",
+      amountCents: 100000,
       type: "one_time",
     },
     {
-      id: "Scott-monthly-support-0",
-      title: "Monthly Support",
+      id: "don-monthly-support-1000",
+      title: "TBD",
       description:
-        "TBD - Recurring monthly support",
-      amountCents: 75000,
+        "TBD",
+      amountCents: 0.00,
       type: "subscription",
       interval: "month",
-    }, 
+    },
   ],
 
   "client@example.com": [
