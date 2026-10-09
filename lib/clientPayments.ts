@@ -34,7 +34,7 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       title: "Total Balance",
       description:
         "Balance for Monthly Ongoing Maintenance and Support",
-      amountCents: 500000000000,
+      amountCents: 500,
       type: "one_time",
     },
     {
