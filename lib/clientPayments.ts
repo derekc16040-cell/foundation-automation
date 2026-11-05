@@ -13,7 +13,7 @@ export const clientPayments: Record<string, ClientPayment[]> = {
       id: "Donalyn-one-time-monthly-support-1000",
       title: "Total Balance",
       description:
-        "Balance for Monthly Ongoing Maintenance and Support",
+        "Balance for Monthly Ongoing Maintenance & Support",
       amountCents: 100000,
       type: "one_time",
     },
